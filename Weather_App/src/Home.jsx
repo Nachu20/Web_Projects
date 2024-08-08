@@ -25,7 +25,8 @@ const Home = () => {
    }
   return (
     <div>
-        <p>Running</p>
+        <div className='flex flex-row justify-center items-center gap-3'>
+        <p>Search City/Town</p>
         <input
         type="text"
         className='bg-yellow-400 text-black'
@@ -33,18 +34,24 @@ const Home = () => {
         value={search}
           />
           <button 
-          className='bg-gray-400 rounded-xl'
+          className='bg-gray-400 rounded-md'
           onClick={api}
           >Search</button>
-           <div>
+          </div>
+           <div className='flex flex-row justify-center items-center'>
                 {data.length > 0 ? (
-                    data.map((item, index) => (
-                        <div key={index} className='p-2'>
-                            <p>Date and Time: {new Date(item.dt * 1000).toLocaleString()}</p>
-                            <p>Temperature: {item.main.temp} K</p>
-                            <p>Wind Speed: {item.wind.speed} m/s</p>
-                            <p>Weather: {item.weather[0].description}</p>
+                    data.slice(0, 4).map((item, index) => (
+                        <div key={index} className='p-2 '>
+                            <div className='bg-slate-500 grid grid-cols-3 lg:grid-cols-5 w-[420px]'>
+                                <div className='flex flex-row'>
+                            <p className='m-2'>Date and Time: {new Date(item.dt * 1000).toLocaleString()}</p>
+                            <p className='m-2'>Temperature: {item.main.temp} K</p>
+                            <p className='m-2'>Wind Speed: {item.wind.speed} m/s</p>
+                            <p className='m-2'>Weather: {item.weather[0].description}</p>
                         </div>
+                        </div>
+                        </div>
+                        
                     ))
                 ) : (
                     !loading && <p>No data available</p>
