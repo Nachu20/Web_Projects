@@ -6,6 +6,7 @@ const Home = () => {
     const [data,setData]=useState([])
     const [loading, setLoading] = useState(false);
     const [search,setSearch]=useState('');
+    const [temp,setTemp]=useState(0);
     
     const api=async()=>{
       try{
@@ -13,7 +14,8 @@ const Home = () => {
         //console.log("hhhhhh")
         const res=await axios.get(`http://api.openweathermap.org/data/2.5/forecast?q=${search}&appid=6639a07bd825756b53c97c4005e0746c`);
         setData((res.data.list))
-
+        
+        
     }
     catch(err){
         console.log(err)
@@ -42,7 +44,7 @@ const Home = () => {
                 {data.length > 0 ? (
                     data.slice(0, 4).map((item, index) => (
                         <div key={index} className='p-2 '>
-                            <div className='bg-slate-500 grid grid-cols-3 lg:grid-cols-5 w-[420px]'>
+                            <div className='bg-slate-500 grid grid-cols-1 lg:grid-cols-2 w-[420px] shadow-2xl'>
                                 <div className='flex flex-row'>
                             <p className='m-3'>Date and Time: {new Date(item.dt * 1000).toLocaleString()}</p>
                             <p className='m-3'>Temperature: {item.main.temp} K</p>
