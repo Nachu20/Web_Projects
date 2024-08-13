@@ -57,9 +57,9 @@ function App() {
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
-      <table className="border-collapse">
+      <table className="border-separate">
         <tbody>
-          {[0, 1, 2].map((row) => (
+          {[0, 1, 2,].map((row) => (
             <tr key={row}>
               {[0, 1, 2].map((col) => (
                 <Cell key={row * 3 + col} num={row * 3 + col} />
@@ -71,7 +71,7 @@ function App() {
       {winner && <div className="mt-4 text-2xl font-bold">Winner: {winner}</div>}
       <button
         onClick={handleReset}
-        className="mt-2 px-4 py-2 bg-green-500 text-white rounded hover:bg-blue-700"
+        className="mt-2 px-4 py-2 bg-yellow-500 text-white rounded hover:bg-blue-700"
       >
         Reset
       </button>
